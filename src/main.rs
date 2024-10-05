@@ -10,9 +10,10 @@ fn dim_triangle() {
 
     let mut intensity = 0.0;
     let mut increase = true;
+    let benchmark_seconds = 10;
     let start_time = Instant::now();
 
-    for _ in 0..2000 {
+    for _ in 0..benchmark_seconds * 1000 {
         sleep(Duration::from_millis(1));
 
         if increase {
@@ -35,7 +36,7 @@ fn dim_triangle() {
     let end_time = Instant::now();
     let duration = end_time - start_time;
     let duration = duration.as_secs_f64();
-    println!("Duration factor: {}", duration / 2.0);
+    println!("Duration factor: {}", duration / benchmark_seconds as f64);
 }
 
 fn main() {
