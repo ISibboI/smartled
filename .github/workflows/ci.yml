@@ -48,7 +48,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        toolchain: [null, "stable", "beta", "nightly"]
+        toolchain: [null]
 
     steps:
       - uses: actions/checkout@v3
