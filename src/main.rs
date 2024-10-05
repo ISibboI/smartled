@@ -13,8 +13,12 @@ fn dim_triangle() {
     let benchmark_seconds = 10;
     let start_time = Instant::now();
 
-    for _ in 0..benchmark_seconds * 1000 {
-        sleep(Duration::from_millis(1));
+    for tick in 1..=benchmark_seconds * 1000 {
+        let target_time = start_time + Duration::from_millis(tick);
+        let current_time = Instant::now();
+        if target_time > current_time {
+            sleep(target_time - current_time);
+        }
 
         if increase {
             intensity += 1e-3;
