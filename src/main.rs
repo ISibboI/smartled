@@ -6,7 +6,7 @@ fn main() {
     println!("Starting PWM");
 
     let _ =
-        Pwm::with_frequency(rppal::pwm::Channel::Pwm0, 10.0, 0.5, Polarity::Normal, true).unwrap();
+        Pwm::with_frequency(rppal::pwm::Channel::Pwm0, 1.0, 0.5, Polarity::Normal, true).unwrap();
 
     println!("PWM running, waiting forever");
 
