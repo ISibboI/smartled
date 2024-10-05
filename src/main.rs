@@ -11,12 +11,15 @@ fn dim_triangle() {
     let mut intensity = 0.0;
     let mut increase = true;
     let benchmark_seconds = 10;
+    let mut sleep_sum = Duration::ZERO;
     let start_time = Instant::now();
 
     for tick in 1..=benchmark_seconds * 1000 {
         let target_time = start_time + Duration::from_millis(tick);
         let current_time = Instant::now();
         if target_time > current_time {
+            let sleep_time = target_time - current_time;
+            sleep_sum += sleep_time;
             sleep(target_time - current_time);
         }
 
@@ -41,6 +44,7 @@ fn dim_triangle() {
     let duration = end_time - start_time;
     let duration = duration.as_secs_f64();
     println!("Duration factor: {}", duration / benchmark_seconds as f64);
+    println!("Total sleep time: {}", sleep_sum.as_secs_f64());
 }
 
 fn main() {
